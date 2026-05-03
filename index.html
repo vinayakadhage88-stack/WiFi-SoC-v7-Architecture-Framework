@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧠 Enterprise SOC Dashboard v7</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <h1>🧠 Enterprise SOC Dashboard</h1>
+                <p>AI-Powered Security Operations Center v7</p>
+            </div>
+            <div class="status" id="status">
+                <span id="connection-status">● Connecting...</span>
+            </div>
+        </header>
+
+        <!-- Main Grid -->
+        <div class="dashboard">
+            <!-- Left Panel: Metrics -->
+            <div class="panel metrics-panel">
+                <h2>📊 System Metrics</h2>
+                
+                <div class="metric-card">
+                    <div class="metric-label">CPU Usage</div>
+                    <div class="metric-value" id="cpu-value">--</div>
+                    <div class="progress-bar">
+                        <div class="progress" id="cpu-bar"></div>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Memory Usage</div>
+                    <div class="metric-value" id="mem-value">--</div>
+                    <div class="progress-bar">
+                        <div class="progress" id="mem-bar"></div>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Disk Usage</div>
+                    <div class="metric-value" id="disk-value">--</div>
+                    <div class="progress-bar">
+                        <div class="progress" id="disk-bar"></div>
+                    </div>
+                </div>
+
+                <div class="metric-card risk-card">
+                    <div class="metric-label">Risk Score</div>
+                    <div class="risk-value" id="risk-value">--</div>
+                    <div class="risk-gauge" id="risk-gauge"></div>
+                </div>
+            </div>
+
+            <!-- Center Panel: Alerts & Status -->
+            <div class="panel alert-panel">
+                <h2>🚨 Security Alerts</h2>
+                
+                <div class="alert-status" id="alert-status">
+                    <div class="status-box">
+                        <span class="status-label">Anomalies Detected</span>
+                        <span class="status-value" id="anomaly-count">0</span>
+                    </div>
+                    <div class="status-box">
+                        <span class="status-label">Critical Alerts</span>
+                        <span class="status-value" id="critical-count">0</span>
+                    </div>
+                    <div class="status-box">
+                        <span class="status-label">Avg Risk</span>
+                        <span class="status-value" id="avg-risk">0</span>
+                    </div>
+                </div>
+
+                <div class="alert-message" id="alert-message">
+                    ✅ System Normal
+                </div>
+
+                <h3>Recent Alerts</h3>
+                <div class="alerts-list" id="alerts-list">
+                    <div class="loading">Loading alerts...</div>
+                </div>
+            </div>
+
+            <!-- Right Panel: Statistics -->
+            <div class="panel stats-panel">
+                <h2>📈 Statistics</h2>
+                
+                <div class="stat-box">
+                    <span class="stat-label">Total Logs</span>
+                    <span class="stat-value" id="total-logs">0</span>
+                </div>
+
+                <div class="stat-box">
+                    <span class="stat-label">Total Alerts</span>
+                    <span class="stat-value" id="total-alerts">0</span>
+                </div>
+
+                <div class="stat-box">
+                    <span class="stat-label">Avg CPU</span>
+                    <span class="stat-value" id="avg-cpu">0%</span>
+                </div>
+
+                <div class="stat-box">
+                    <span class="stat-label">AI Engine</span>
+                    <span class="stat-value" id="ai-status">Training...</span>
+                </div>
+
+                <h3>Top Processes</h3>
+                <div class="processes-list" id="processes-list">
+                    <div class="loading">Loading processes...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart Area -->
+        <div class="panel full-width">
+            <h2>📉 Risk Score History</h2>
+            <canvas id="risk-chart" width="400" height="100"></canvas>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Last updated: <span id="last-update">--:--:--</span></p>
+            <p>Backend: http://127.0.0.1:8000 | Refresh Rate: 2000ms</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
